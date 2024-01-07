@@ -121,7 +121,7 @@ def initialize(request, wordlist, single_url=False):
     if not request['url']:
         return 'skipped'
     else:
-        fuzz = ("z" + random_str(6)) if not mem.param_value else mem.param_value
+        fuzz = ("z" + random_str(6)) if not mem.var['param_value'] else mem.var['param_value']
         response_1 = requester(request, {fuzz[:-1]: fuzz[::-1][:-1]})
         if single_url:
             print('%s Analysing HTTP response for anomalies' % run)
@@ -133,7 +133,7 @@ def initialize(request, wordlist, single_url=False):
         found, words_exist = heuristic(response_1, wordlist)
 
         factors = define(response_1, response_2, fuzz, fuzz[::-1], wordlist)
-        zzuf = ("z" + random_str(6)) if not mem.param_value else mem.param_value
+        zzuf = ("z" + random_str(6)) if not mem.var['param_value'] else mem.var['param_value']
         response_3 = requester(request, {zzuf[:-1]: zzuf[::-1][:-1]})
         while factors:
             reason = compare(response_3, factors, {zzuf[:-1]: zzuf[::-1][:-1]})[2]
