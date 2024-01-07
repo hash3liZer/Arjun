@@ -32,7 +32,7 @@ parser.add_argument('-i', help='Import target URLs from file.', dest='import_fil
 parser.add_argument('-T', help='HTTP request timeout in seconds. (default: 15)', dest='timeout', type=float, default=15)
 parser.add_argument('-c', help='Chunk size. The number of parameters to be sent at once', type=int, dest='chunks', default=250)
 parser.add_argument('-q', help='Quiet mode. No output.', dest='quiet', action='store_true')
-parser.add_argument('--param-value', help='Set a custom parameter value.', dest='param_value', default="", type=str, const=True)
+parser.add_argument('--param-value', help='Set a custom parameter value.', dest='param_value', default="", type=str, nargs="?", const=True)
 parser.add_argument('--headers', help='Add headers. Separate multiple headers with a new line.', dest='headers', nargs='?', const=True)
 parser.add_argument('--passive', help='Collect parameter names from passive sources like wayback, commoncrawl and otx.', dest='passive', nargs='?', const='-')
 parser.add_argument('--stable', help='Prefer stability over speed.', dest='stable', action='store_true')
